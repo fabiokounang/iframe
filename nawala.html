@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR</title>
+  <link id="style2" rel="stylesheet" href="https://iframe15.otomatis.vip/style2.css">
+</head>
+
+<body>
+  <div class="flexs">
+  <h2 id="judul" style="color: white;">QRIS Deposit</h2>
+    <div id="form" class="form">
+      <div id="container-form">
+        <div class="input-container ic2">
+          <label for="username" class="placeholder">Username / UserID Member</label>
+          <input id="username" class="input" type="text" placeholder="" />
+        </div>
+        <div class="input-container ic2">
+          <label for="nominal" class="placeholder">Nominal Deposit</label>
+          <input onkeyup="thousandSeparator()" id="nominal" class="input" type="number" placeholder="" />
+          <small id="hint"></small>
+          <div class="cut"></div>
+        </div>
+        <div id="divbonus" class="input-container ic2" style="display: none;">
+          <label for="bonus" class="placeholder">bonus</label>
+          <select id="bonus" class="input">
+            <option value="0" selected>No Bonus</option>
+          </select>
+        </div>
+        <br>
+        <button id="generate" onclick="onGenerateQr()" type="button" class="submit">Tampilkan QR</button>
+      </div>
+      <div id="container-qr">
+        <br><br>
+        <div id="sub"></div>
+        <div id="qr"></div>
+        <div id="canvascontainer">
+          <canvas id="canvasqr"></canvas>
+          <div id="btn-canvas"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+<script src="https://iframe15.otomatis.vip/utils/short-crypt.js"></script>
+<script src="https://iframe15.otomatis.vip/utils/qr.js"></script>
+
+<script>
+  const timestamp = Date.now();
+  const version = `?version=${timestamp}`;
+  document.getElementById('style2').href = `https://iframe15.otomatis.vip/style2.css${version}`;
+
+  var body = document.body,
+  html = document.documentElement;
+  
+  var height = Math.max( body.scrollHeight, body.offsetHeight,  html.clientHeight, html.scrollHeight, html.offsetHeight );
+  window.parent.postMessage('onload', "*");
+  window.parent.postMessage('{"height":'+height+'}', "*")
+  if(window.opener) {
+    window.opener.postMessage('onload', "*");
+    window.opener.postMessage('{"height":'+height+'}', "*");
+  }
+  var supplyurl = '[replacesupply]';
+  </script>
+  <script>document.write("<script type='text/javascript' src='https://iframe15.otomatis.vip/utils/script-nawala.js?v=" + Date.now() + "'><\/script>");</script>
+</html>
